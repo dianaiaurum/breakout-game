@@ -27,3 +27,7 @@ void ball::update() {
 void ball::draw(sf::RenderWindow& window) {
 	window.draw(sprite);
 }
+
+void ball::process_player_input()
+{
+}

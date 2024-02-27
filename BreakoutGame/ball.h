@@ -15,5 +15,7 @@ public:
 	ball(float x, float y);
 	void update() override;
 	void draw(sf::RenderWindow& window) override;
+	void process_player_input() override;
+
 };
 #endif // !BALL_H
