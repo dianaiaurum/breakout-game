@@ -15,6 +15,17 @@ public:
 	//The display member function will display the object in the game window
 	virtual void update() = 0;
 	virtual void draw(sf::RenderWindow& window) = 0;
+
+	//Helper function to get the bounding box of a sprite
+	sf::FloatRect get_bounding_box() const noexcept;
+
+	//Helper function to het the center of a sprite
+	sf::Vector2f get_centre() const noexcept;
+
+	//Helper function to get the position of the sprite
+	float x() const noexcept;
+	float y() const noexcept;
+
 	//Virtual destructor
 	virtual ~entity() {}
 };
@@ -23,9 +34,6 @@ class moving_entity : public entity {
 protected:
 	sf::Vector2f velocity;
 
-public:
-	//Pure virtual functions inherited from parent class
-	virtual void process_player_input() = 0;
 };
 
 

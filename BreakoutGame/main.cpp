@@ -1,16 +1,21 @@
 //Code for a "breakout" game
 //Final project of UDEMY C++ course
-//Uses the SFML graphics library
+//Uses the SFM graphics library
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "constants.h"
 #include "background.h"
+#include "ball.h"
 
 using namespace std::literals;
 
 int main() {
 	//Create the background object
 	background the_background(0.0f, 0.0f);
+	
+	//Create ball
+	ball the_ball(constants::window_width / 2, constants::window_height / 2);
+
 
 	//Create the game's window using an object of class RenderWindow
 	//The constructor takes and SFML 2d vector with the window dimensions
@@ -46,9 +51,12 @@ int main() {
 
 		//Calculate th updated graphics
 		the_background.update();
+		the_ball.update();
+
 
 		//Display the updated graphics
 		the_background.draw(game_window);
+		the_ball.draw(game_window);
 		game_window.display();
 
 	}
