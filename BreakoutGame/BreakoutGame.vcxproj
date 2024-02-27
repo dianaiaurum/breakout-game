@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="background.h" />
+    <ClInclude Include="ball.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
   </ItemGroup>
