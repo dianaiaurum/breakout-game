@@ -372,3 +372,9 @@ BreakoutGame/.vs/BreakoutGame/v17/.suo
 BreakoutGame/.vs/BreakoutGame/v17/Browse.VC.db
 *.ipch
 BreakoutGame/.vs/BreakoutGame/v17/ipch/AutoPCH/8c3529fdba6fde71/BALL.ipch
+*.tlog
+*.tlog
+*.idb
+*.ipch
+BreakoutGame/.vs/BreakoutGame/v17/.suo
+*.db
