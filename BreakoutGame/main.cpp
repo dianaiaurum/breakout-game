@@ -26,8 +26,8 @@ int main() {
 	//Populate bricks
 	std::vector<brick> bricks;
 
-<<<<<<< Updated upstream
-	for (int i = 1; i <= constants::brick_columns; i++) {
+
+	for (int i = 1; i <= constants::brick_collumns; i++) {
 		for (int j = 1; j <= constants::brick_rows; j++) {
 			//Calculate brick's possition
 			float x = constants::brick_offset + i * constants::brick_width;
@@ -35,11 +35,6 @@ int main() {
 
 			//Create the brick object
 			bricks.emplace_back(x, y);
-=======
-	for (int i = 0; i < constants::brick_collumns; i++) {
-		for (int j = 0; j < constants::brick_rows; j++) {
-			//Calculate te brick's possition
->>>>>>> Stashed changes
 		}
 	}
 

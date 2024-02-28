@@ -4,7 +4,6 @@
 #include "entity.h"
 #include "constants.h"
 
-<<<<<<< Updated upstream
 //Class to represent a brick
 //Inherits from entity
 //A grid of bricks is displayed across the top of the screen
@@ -13,9 +12,6 @@
 //When a brick is destroyed, it is deleted from the vector
 
 class brick : public entity {
-=======
-class brick : public moving_entity {
->>>>>>> Stashed changes
 private:
 	static sf::Texture texture;
 
