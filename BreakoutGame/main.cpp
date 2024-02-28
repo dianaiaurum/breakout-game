@@ -6,6 +6,7 @@
 #include "constants.h"
 #include "background.h"
 #include "ball.h"
+#include "paddle.h"
 
 using namespace std::literals;
 
@@ -15,6 +16,9 @@ int main() {
 	
 	//Create ball
 	ball the_ball(constants::window_width / 2, constants::window_height / 2);
+
+	//Create the paddle
+	paddle the_paddle(constants::window_width / 2, constants::window_height - constants::paddle_height);
 
 
 	//Create the game's window using an object of class RenderWindow
@@ -52,11 +56,12 @@ int main() {
 		//Calculate th updated graphics
 		the_background.update();
 		the_ball.update();
-
+		the_paddle.update();
 
 		//Display the updated graphics
 		the_background.draw(game_window);
 		the_ball.draw(game_window);
+		the_paddle.draw(game_window);
 		game_window.display();
 
 	}

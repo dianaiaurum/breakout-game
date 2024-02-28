@@ -34,7 +34,11 @@ class moving_entity : public entity {
 protected:
 	sf::Vector2f velocity;
 
+public:
+	//Pure virtual functions inherited from parent class
+	virtual void process_player_input() = 0;
 };
+
 
 
 #endif  // ! ENTITY_H
