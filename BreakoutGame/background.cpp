@@ -16,3 +16,4 @@ void background::update() {
 void background::draw(sf::RenderWindow& window) {
 	window.draw(sprite);
 }
+

@@ -80,6 +80,15 @@ int main() {
 	
 		handle_collision(the_ball, the_paddle);
 
+		//Check every brick for collision with the ball
+		for (auto& b : bricks)
+			handle_collision(the_ball, b);
+
+		//Erase any destroyed bricks
+		bricks.erase(std::remove_if(std::begin(bricks), std::end(bricks),
+			[](const brick& b) {return b.is_destroyed(); }),
+			std::end(bricks));
+
 		//Display the updated graphics
 		the_background.draw(game_window);
 		the_ball.draw(game_window);

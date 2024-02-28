@@ -19,3 +19,31 @@ float entity::x() const noexcept {
 float entity::y() const noexcept {
     return sprite.getPosition().y;
 }
+
+float moving_entity::left() const noexcept {
+	auto box = get_bounding_box();
+	return x() - box.width / 2.0f;
+}
+
+float moving_entity::right() const noexcept {
+	auto box = get_bounding_box();
+	return x() + box.width / 2.0f;
+}
+
+float moving_entity::top() const noexcept {
+	auto box = get_bounding_box();
+	return y() - box.height / 2.0f;
+}
+
+float moving_entity::bottom() const noexcept {
+	auto box = get_bounding_box();
+	return y() - box.height / 2.0f;
+}
+
+void moving_entity::destroy() noexcept{
+	destroyed = true;
+}
+
+bool moving_entity::is_destroyed() const noexcept{
+	return destroyed;
+}

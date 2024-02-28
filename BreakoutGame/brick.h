@@ -11,7 +11,7 @@
 //When the ball hits a brick, the brick is destroyd and dissapears
 //When a brick is destroyed, it is deleted from the vector
 
-class brick : public entity {
+class brick : public moving_entity {
 private:
 	static sf::Texture texture;
 
@@ -19,6 +19,10 @@ public:
 	brick(float x, float y);
 	void update() override;
 	void draw(sf::RenderWindow& window) override;
+
+	void process_player_input() override;
+
+
 };
 
 #endif // !BRICK_H

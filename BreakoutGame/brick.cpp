@@ -15,3 +15,9 @@ void brick::update(){
 void brick::draw(sf::RenderWindow& window){
 	window.draw(sprite);
 }
+
+void brick::process_player_input()
+{
+}
+
+

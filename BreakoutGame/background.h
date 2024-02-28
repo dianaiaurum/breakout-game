@@ -23,6 +23,7 @@ public:
 	//Implement pure virtual functions
 	void update() override;
 	void draw(sf::RenderWindow& window) override;
+
 };
 
 #endif // ! BACKGROUND_H

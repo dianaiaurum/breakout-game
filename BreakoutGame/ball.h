@@ -17,6 +17,7 @@ public:
 	void draw(sf::RenderWindow& window) override;
 	void process_player_input() override;
 	void move_up();
+	void move_down();
 	void move_left();
 	void move_right();
 

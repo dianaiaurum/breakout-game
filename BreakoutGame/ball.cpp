@@ -36,6 +36,10 @@ void ball::move_up(){
 	velocity.y = -constants::ball_speed;
 }
 
+void ball::move_down() {
+	velocity.y = constants::ball_speed;
+}
+
 void ball::move_left(){
 	velocity.x = -constants::ball_speed;
 }

@@ -8,6 +8,8 @@
 class entity {
 protected:
 	sf::Sprite sprite;
+	bool destroyed{ 0 };
+
 
 public:
 	//Pure member functions -> concrete graphical entities must implement these functions
@@ -37,6 +39,16 @@ protected:
 public:
 	//Pure virtual functions inherited from parent class
 	virtual void process_player_input() = 0;
+
+	//Helper functions to get the edges of the sprite
+	float left() const noexcept;
+	float right() const noexcept;
+	float top() const noexcept;
+	float bottom() const noexcept;
+
+	//Helper functions for the state of the entity
+	void destroy() noexcept;
+	bool is_destroyed() const noexcept;
 };
 
 
