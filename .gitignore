@@ -362,3 +362,7 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 BreakoutGame/.vs/BreakoutGame/v17/Browse.VC.db
+*.db
+*.ipch
+BreakoutGame/.vs/BreakoutGame/v17/Browse.VC.db
+BreakoutGame/.vs/BreakoutGame/v17/ipch/AutoPCH/24736fcfd30ab775/MAIN.ipch
