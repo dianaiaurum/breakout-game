@@ -132,6 +132,8 @@
   <ItemGroup>
     <ClCompile Include="background.cpp" />
     <ClCompile Include="ball.cpp" />
+    <ClCompile Include="brick.cpp" />
+    <ClCompile Include="collisions.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="paddle.cpp" />
@@ -139,6 +141,8 @@
   <ItemGroup>
     <ClInclude Include="background.h" />
     <ClInclude Include="ball.h" />
+    <ClInclude Include="brick.h" />
+    <ClInclude Include="collisions.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="paddle.h" />

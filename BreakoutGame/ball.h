@@ -16,6 +16,9 @@ public:
 	void update() override;
 	void draw(sf::RenderWindow& window) override;
 	void process_player_input() override;
+	void move_up();
+	void move_left();
+	void move_right();
 
 };
 #endif // !BALL_H

@@ -31,3 +31,15 @@ void ball::draw(sf::RenderWindow& window) {
 void ball::process_player_input()
 {
 }
+
+void ball::move_up(){
+	velocity.y = -constants::ball_speed;
+}
+
+void ball::move_left(){
+	velocity.x = -constants::ball_speed;
+}
+
+void ball::move_right(){
+	velocity.x = constants::ball_speed;
+}
