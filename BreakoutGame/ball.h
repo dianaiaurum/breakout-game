@@ -4,6 +4,8 @@
 #include "entity.h"
 #include "constants.h"
 
+// Class to represent the bouncing ball
+// Inherits from moving_entity
 class ball : public moving_entity {
 private:
 	static sf::Texture texture;

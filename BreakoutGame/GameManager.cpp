@@ -19,7 +19,7 @@ void EntityManager::refresh() {
 
 	//Now we can safely deestroy thee objects, now that there are no aliases to them
 	all_entities.erase(remove_if(begin(all_entities), end(all_entities),
-		[](const auto& p) {return p->is_destroyed();}),
+		[](const auto& p) {return p->is_destroyed(); }),
 		end(all_entities));
 }
 
@@ -31,7 +31,7 @@ void EntityManager::clear() {
 }
 
 //Function to update all the entities
-void EntityManager::update(){
+void EntityManager::update() {
 	for (auto& e : all_entities)
 		e->update();
 }
@@ -42,9 +42,22 @@ void EntityManager::draw(sf::RenderWindow& window) {
 		e->draw(window);
 }
 
-GameManager::GameManager()  {
-	//The ball, background and paddle are initialized in-place
-	//Populate the bricks vector
+GameManager::GameManager() {
+	game_window.setFramerateLimit(60);   //Max framerate is 60 fps
+}
+
+void GameManager::reset() {
+	state = game_state::paused;
+	//We reset the start key
+	//start_key_active = false;
+	//Repopulate the brick grid
+
+	manager.clear();
+
+	manager.create<background>(0.0f, 0.0f);
+	manager.create<ball>(constants::window_width / 2, constants::window_height - constants::paddle_height - 13.0f);
+	manager.create<paddle>(constants::window_width / 2, constants::window_height - constants::paddle_height);
+
 	for (int i = 1; i <= constants::brick_collumns; i++) {
 		for (int j = 1; j <= constants::brick_rows; j++) {
 			//Calculate brick's possition
@@ -52,13 +65,9 @@ GameManager::GameManager()  {
 			float y = j * constants::brick_height;
 
 			//Create the brick object
-			bricks.emplace_back(x, y);
+			manager.create<brick>(x, y);
 		}
 	}
-	//Limit framerate
-	//This allows other processes to run and reduces power consumption
-	game_window.setFramerateLimit(60);   //Max framerate is 60 fps
-
 }
 
 //Game loop
@@ -66,22 +75,22 @@ GameManager::GameManager()  {
 //Check for new events
 //Calculate updated graphics
 //Display updated graphics
-void GameManager::run(){
-	
+void GameManager::run() {
+
 
 	//Was the pause key pressed in the last frame? - anticipates the user pressing
 	//and holding gown the pause key
 	bool pause_key_active{ false };
 
 	//Game loop
-	
+
 	while (game_window.isOpen()) {
-		if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) && !start_key_active) {
+		/*if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) && !start_key_active) {
 			start_key_active = true;
 			the_ball.set_velocity();
-		}
-		
-		game_state::running;
+		}*/
+
+		//game_state::running;
 		//Clear the screen
 		game_window.clear(sf::Color::Black);
 
@@ -136,34 +145,12 @@ void GameManager::run(){
 				});
 			manager.refresh();
 		}
-		
+
 		//Display the updated graphics
 		manager.draw(game_window);
 		game_window.display();
 	}
 }
 
-void GameManager::reset(){
-	state = game_state::paused;
-	//We reset the start key
-	start_key_active = false;
-	//Repopulate the brick grid
 
-	manager.clear();
-
-	manager.create<background>(0.0f, 0.0f);
-	manager.create<ball>(constants::window_width / 2, constants::window_height - constants::paddle_height - the_ball.get_centre().y * 2);
-	manager.create<paddle>(constants::window_width / 2, constants::window_height - constants::paddle_height);
-
-	for (int i = 1; i <= constants::brick_collumns; i++) {
-		for (int j = 1; j <= constants::brick_rows; j++) {
-			//Calculate brick's possition
-			float x = constants::brick_offset + i * constants::brick_width;
-			float y = j * constants::brick_height;
-
-			//Create the brick object
-			bricks.emplace_back(x, y);
-		}
-	}
-}
 

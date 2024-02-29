@@ -1,10 +1,13 @@
 #include "paddle.h"
-#include "iostream"
-paddle::paddle(float x, float y) {
+
+// Initialize static data
+sf::Texture paddle::texture;
+
+paddle::paddle(float x, float y) : moving_entity() {
 	texture.loadFromFile("paddle.png");
 	sprite.setTexture(texture);
 	sprite.setPosition(x, y);
-	velocity = { constants::no_speed, constants::no_speed };
+	velocity = { constants::paddle_speed, constants::no_speed};
 	//Make the origin of the sprite the center instead of the top-left corner
 	sprite.setOrigin(get_centre());
 }
@@ -12,8 +15,8 @@ paddle::paddle(float x, float y) {
 void paddle::update() {
 	//Paddle moves as long as one of the keys is pressed
 	//The paddle should not go out of window bounds
-	sprite.move(velocity);
 	process_player_input();
+	sprite.move(velocity);
 
 }
 
@@ -21,13 +24,13 @@ void paddle::process_player_input() {
 	//Paddle moves as long as one of the keys is pressed
 	//The paddle should not go out of window bounds
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) {
-		if (x() > 0)
+		if (x() >= 0)
 			velocity.x = -constants::paddle_speed;
 		else
 			velocity.x = constants::no_speed;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) {
-		if (x() < constants::window_width)
+		if (x() <= constants::window_width)
 			velocity.x = constants::paddle_speed;
 		else
 			velocity.x = constants::no_speed;
@@ -44,5 +47,6 @@ void paddle::set_velocity()
 }
 
 void paddle::draw(sf::RenderWindow& window) {
+	// Ask the window to draw the shape for us
 	window.draw(sprite);
 }

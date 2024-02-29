@@ -2,11 +2,11 @@
 
 sf::Texture ball::texture;
 
-ball::ball(float x, float y) {
+ball::ball(float x, float y) : moving_entity() {
 	texture.loadFromFile("ball.png");
 	sprite.setTexture(texture);
 	sprite.setPosition(x, y);
-	velocity = { constants::no_speed, constants::no_speed };
+	velocity = { constants::ball_speed, constants::ball_speed };
 	sprite.setOrigin(get_centre());
 
 }
@@ -15,7 +15,6 @@ void ball::update() {
 	//If the start key has been pressed, the ball enters its free movement; until then, the ball moves 
 	//with the paddle
 	sprite.move(velocity);
-	if (game_started) {
 		//We check if the ball has moved out of the left of right side of the screen
 	//If its out of bounds, we reverse the velocity so that it will "bounce back"
 		if (x() < 0 || x() > constants::window_width) {
@@ -24,10 +23,6 @@ void ball::update() {
 		if (y() < 0 || y() > constants::window_height) {
 			velocity.y = -velocity.y;
 		}
-	}
-	else {
-		process_player_input();
-	}
 	
 }
 
