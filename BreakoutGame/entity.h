@@ -18,6 +18,10 @@ public:
 	virtual void update() = 0;
 	virtual void draw(sf::RenderWindow& window) = 0;
 
+	//Helper functions for the state of the entity
+	void destroy() noexcept;
+	bool is_destroyed() const noexcept;
+
 	//Helper function to get the bounding box of a sprite
 	sf::FloatRect get_bounding_box() const noexcept;
 
@@ -50,9 +54,7 @@ public:
 	float top() const noexcept;
 	float bottom() const noexcept;
 
-	//Helper functions for the state of the entity
-	void destroy() noexcept;
-	bool is_destroyed() const noexcept;
+	
 };
 
 

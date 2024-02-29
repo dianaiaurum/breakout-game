@@ -1,8 +1,12 @@
 #pragma once
 #ifndef GAMEMANAGER_H
+
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
+#include <memory>
+#include <typeinfo>
+
 #include "constants.h"
 #include "background.h"
 #include "ball.h"
