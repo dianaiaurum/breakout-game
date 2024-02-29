@@ -110,6 +110,13 @@ void GameManager::reset(){
 	//We reset the start key
 	start_key_active = false;
 	//Repopulate the brick grid
+
+	manager.clear();
+
+	manager.create<background>(0.0f, 0.0f);
+	manager.create<ball>(constants::window_width / 2, constants::window_height - constants::paddle_height - the_ball.get_centre().y * 2);
+	manager.create<paddle>(constants::window_width / 2, constants::window_height - constants::paddle_height);
+
 	for (int i = 1; i <= constants::brick_collumns; i++) {
 		for (int j = 1; j <= constants::brick_rows; j++) {
 			//Calculate brick's possition
@@ -120,6 +127,20 @@ void GameManager::reset(){
 			bricks.emplace_back(x, y);
 		}
 	}
-	the_ball.reset_position(constants::window_width / 2, constants::window_height - constants::paddle_height - the_ball.get_centre().y * 2);
-	the_paddle.reset_position(constants::window_width / 2, constants::window_height - constants::paddle_height);
+}
+
+void EntityManager::refresh()
+{
+}
+
+void EntityManager::clear()
+{
+}
+
+void EntityManager::update()
+{
+}
+
+void EntityManager::draw(sf::RenderWindow& window)
+{
 }

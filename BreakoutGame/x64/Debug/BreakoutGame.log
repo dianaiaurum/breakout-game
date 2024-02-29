@@ -1,2 +1,23 @@
-﻿  ball.cpp
+﻿  GameManager.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         ]
+  (compiling source file 'GameManager.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56):
+  the template instantiation context (the oldest one first) is
+  	D:\Courses\learn_advanced_modern_cpp_exercises\1.FinalProject\breakout-game\BreakoutGame\GameManager.cpp(117,9):
+  	see reference to function template instantiation 'T &EntityManager::create<ball,int,float>(int &&,float &&)' being compiled
+          with
+          [
+              T=ball
+          ]
+  	D:\Courses\learn_advanced_modern_cpp_exercises\1.FinalProject\breakout-game\BreakoutGame\GameManager.h(54,18):
+  	see reference to function template instantiation 'std::unique_ptr<ball,std::default_delete<ball>> std::make_unique<ball,_Ty,float,0>(_Ty &&,float &&)' being compiled
+          with
+          [
+              _Ty=int
+          ]
+  
   BreakoutGame.vcxproj -> D:\Courses\learn_advanced_modern_cpp_exercises\1.FinalProject\breakout-game\BreakoutGame\x64\Debug\BreakoutGame.exe
