@@ -35,6 +35,14 @@ void paddle::process_player_input() {
 	else velocity.x = 0;
 }
 
+void paddle::reset_position(float x, float y){
+	sprite.setPosition(x, y);
+}
+
+void paddle::set_velocity()
+{
+}
+
 void paddle::draw(sf::RenderWindow& window) {
 	window.draw(sprite);
 }

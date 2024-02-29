@@ -387,3 +387,9 @@ BreakoutGame/.vs/BreakoutGame/v17/.suo
 *.idb
 BreakoutGame/.vs/BreakoutGame/v17/.suo
 BreakoutGame/.vs/BreakoutGame/v17/Browse.VC.db
+*.vcxproj
+*.filters
+*.tlog
+*.idb
+BreakoutGame/.vs/BreakoutGame/v17/.suo
+*.db

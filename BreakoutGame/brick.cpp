@@ -20,4 +20,12 @@ void brick::process_player_input()
 {
 }
 
+void brick::reset_position(float x, float y)
+{
+}
+
+void brick::set_velocity()
+{
+}
+
 

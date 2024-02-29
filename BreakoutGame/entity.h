@@ -35,10 +35,14 @@ public:
 class moving_entity : public entity {
 protected:
 	sf::Vector2f velocity;
+	bool game_started{ false };
+
 
 public:
 	//Pure virtual functions inherited from parent class
 	virtual void process_player_input() = 0;
+	virtual void reset_position(float x, float y) = 0;
+	virtual void set_velocity() = 0;
 
 	//Helper functions to get the edges of the sprite
 	float left() const noexcept;

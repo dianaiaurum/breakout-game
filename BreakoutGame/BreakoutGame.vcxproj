@@ -135,6 +135,7 @@
     <ClCompile Include="brick.cpp" />
     <ClCompile Include="collisions.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="paddle.cpp" />
   </ItemGroup>
@@ -145,6 +146,7 @@
     <ClInclude Include="collisions.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="paddle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

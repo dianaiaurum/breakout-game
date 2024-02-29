@@ -21,6 +21,8 @@ public:
 	void draw(sf::RenderWindow& window) override;
 
 	void process_player_input() override;
+	void reset_position(float x, float y) override;
+	void set_velocity() override;
 
 
 };
