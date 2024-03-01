@@ -19,6 +19,7 @@ struct constants {
 	static constexpr float brick_offset{ brick_width/2.0f };
 	static constexpr int brick_collumns{ 10 };
 	static constexpr int brick_rows{ 4 };
+	static constexpr int brick_strength{ 3 };
 
 };
 

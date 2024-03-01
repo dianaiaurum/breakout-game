@@ -14,6 +14,7 @@
 class brick : public moving_entity {
 private:
 	static sf::Texture texture;
+	int strength{ constants::brick_strength };
 
 public:
 	brick(float x, float y);
@@ -23,7 +24,9 @@ public:
 	void process_player_input() override;
 	void reset_position(float x, float y) override;
 	void set_velocity() override;
-
+	void set_strength(int s) noexcept;
+	void weaken() noexcept;
+	bool is_weakened() const noexcept;
 
 };
 

@@ -22,7 +22,8 @@ void handle_collision(ball& b, const paddle& p){
 void handle_collision(ball& ball, brick& block){
     if (is_interacting(block, ball)) {
         //The brick is destroyed
-        block.destroy();
+        block.weaken();
+        if (block.is_weakened()) block.destroy();
 
         //Make the new direction depend on the collision of the brick
 

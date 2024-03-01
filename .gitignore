@@ -393,3 +393,6 @@ BreakoutGame/.vs/BreakoutGame/v17/Browse.VC.db
 *.idb
 BreakoutGame/.vs/BreakoutGame/v17/.suo
 *.db
+BreakoutGame/.vs/BreakoutGame/v17/.suo
+*.db
+*.ipch
