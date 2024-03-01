@@ -17,12 +17,9 @@ void ball::update() {
 	sprite.move(velocity);
 		//We check if the ball has moved out of the left of right side of the screen
 	//If its out of bounds, we reverse the velocity so that it will "bounce back"
-		if (x() < 0 || x() > constants::window_width) {
-			velocity.x = -velocity.x;
-		}
-		if (y() < 0 || y() > constants::window_height) {
-			velocity.y = -velocity.y;
-		}
+	if (x() < 0 || x() > constants::window_width) velocity.x = -velocity.x;
+	if (y() < 0) velocity.y = -velocity.y;
+	else if (y() > constants::window_height) destroy();
 	
 }
 

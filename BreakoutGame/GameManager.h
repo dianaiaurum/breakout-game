@@ -107,23 +107,30 @@ using namespace std::literals;
 class GameManager {
 private:
 	//Enum class with allowed values for the game's state
-	enum class game_state{paused, running};
+	enum class game_state{paused, running, game_over, win};
 
 	//Create the game's window using an object of class RenderWindow
 	//The constructor takes and SFML 2d vector with the window dimensions
 	//and an std::string with the window title
 	//The sfml code is in the sf namespace
 	sf::RenderWindow game_window{ {constants::window_width, constants::window_height},
-								"Simple Breakout version 10" };
+								"Simple Breakout version 12" };
 
 	//Instead of embedding every entity in the game class, use an entity_manager
 	EntityManager manager;
 
-	//Member to store the current state of the game
-	game_state state{ game_state::running };
+	//Use SFML text and font classes to communicate with the player
+	sf::Font verdana;
+	sf::Text text_state, text_lives;
 
-	//Tracks if the start key "Space" has been pressed for the game to start
-	//bool start_key_active{ false };
+	//Member to store the current state of the game
+	game_state state{ game_state::game_over };
+
+	// Counter for the number of lives
+	// Each time the ball hits the bottom of the screen, the player loses a life
+	// When the player has no more lives left, the game is over
+	//If the player destroys all the bricks before that, the player wins
+	int lives{ constants::player_lives };
 
 
 public:
@@ -135,6 +142,9 @@ public:
 	//Reinitialize the game
 	void reset();
 
+	// Helper functions to manage lives
+	void lose_a_life() noexcept;
+	void set_lives() noexcept;
 };
 
 #endif // !GAMEMANAGER_H

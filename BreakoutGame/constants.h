@@ -20,6 +20,7 @@ struct constants {
 	static constexpr int brick_collumns{ 10 };
 	static constexpr int brick_rows{ 4 };
 	static constexpr int brick_strength{ 3 };
+	static constexpr int player_lives{ 3 };
 
 };
 

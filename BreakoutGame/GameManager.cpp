@@ -44,9 +44,27 @@ void EntityManager::draw(sf::RenderWindow& window) {
 
 GameManager::GameManager() {
 	game_window.setFramerateLimit(60);   //Max framerate is 60 fps
+
+	// Load a font from file
+	verdana.loadFromFile("C:/Windows/fonts/Verdana.ttf");
+
+	//Configure our text objects
+	text_state.setFont(verdana);
+	text_state.setPosition(constants::window_width / 2.0f - 100.0f, constants::window_height / 2.0f - 100.0f);
+	text_state.setCharacterSize(35);
+	text_state.setFillColor(sf::Color::White);
+	text_state.setString("Paused");
+
+	text_lives.setFont(verdana);
+	text_lives.setPosition(constants::window_width / 2.0f - 65.0f, constants::window_height / 2.0f - 50.0f);
+	text_lives.setCharacterSize(35);
+	text_lives.setFillColor(sf::Color::White);
+	text_lives.setString("Lives: " + std::to_string(lives));
+
 }
 
 void GameManager::reset() {
+	set_lives();
 	state = game_state::paused;
 	//We reset the start key
 	//start_key_active = false;
@@ -70,6 +88,16 @@ void GameManager::reset() {
 	}
 }
 
+void GameManager::lose_a_life() noexcept{
+	if (lives > 0) lives--;
+}
+
+void GameManager::set_lives() noexcept{
+	lives = constants::player_lives;
+}
+
+
+
 //Game loop
 //Clear the screen
 //Check for new events
@@ -85,11 +113,6 @@ void GameManager::run() {
 	//Game loop
 
 	while (game_window.isOpen()) {
-		/*if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space)) && !start_key_active) {
-			start_key_active = true;
-			the_ball.set_velocity();
-		}*/
-
 		//game_state::running;
 		//Clear the screen
 		game_window.clear(sf::Color::Black);
@@ -120,12 +143,56 @@ void GameManager::run() {
 		}
 		else
 			pause_key_active = false;
-
+		
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::R))
 			reset();
 
+		//If the game is not running, the entities are not updated
+		// They ar redrawn only if the game is paused
+		if (state == game_state::paused) {
+			//Display the graphics
+			manager.draw(game_window);
+		}
+
 		//Calculate the updated graphics if the game is not paused
-		if (state != game_state::paused) {
+		if (state != game_state::running) {
+			switch (state) {
+			case game_state::paused:
+				text_state.setString("   Paused   ");
+				break;
+			case game_state::game_over:
+				text_state.setString(" Game over! ");
+				break;
+			case game_state::win:
+				text_state.setString("Player Wins!");
+				break;
+			default:
+				break;
+			}
+			game_window.draw(text_state);
+			game_window.draw(text_lives);
+		} 
+		else {
+			//If there are no remaining balls on the screen
+			if (manager.get_all<ball>().empty()) {
+				//Spawn a new one and reduce the player's remaining lives
+				manager.create<ball>(constants::window_width / 2.0f, constants::window_height / 2.0f);
+				--lives;
+
+				state = game_state::paused;
+			}
+
+			//If there are no remaining bricks on the screen, the player has won
+			if (manager.get_all<brick>().empty())
+				state = game_state::win;
+
+			// If the player has used up all of their lives, the game is over
+			if (lives <= 0)
+				state = game_state::game_over;
+
+			//Update the text for the number of remaining lives
+			text_lives.setString("Lives: " + std::to_string(lives));
+
 			manager.update();
 
 			//For every ball, call a function which
@@ -144,10 +211,10 @@ void GameManager::run() {
 					});
 				});
 			manager.refresh();
+			manager.draw(game_window);
 		}
 
 		//Display the updated graphics
-		manager.draw(game_window);
 		game_window.display();
 	}
 }
